@@ -1,0 +1,31 @@
+ame: Run Score Calculator
+
+on:
+  push:
+    branches:
+      - master
+jj
+jobs:
+  run-score-calculator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jinja2
+      - name: Run score_calculator.py
+        run: python src/score_calculator.py save.eu4
+      - name: Commit and push index.html
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add index.html
+          git commit -m "Update index.html [auto]" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:master
