@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h1, h2 { color: #333; }
+        .accordion { cursor: pointer; padding: 10px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; background-color: #f2f2f2; margin-bottom: 5px; }
+        .accordion:hover { background-color: #ddd; }
+        .panel { padding: 10px; display: none; overflow: hidden; background-color: #f9f9f9; border: 1px solid #ddd; margin-bottom: 10px; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 5px; }
+        .highlight { font-weight: bold; color: #555; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const panel = this.nextElementSibling;
+                    if (panel.style.display === 'block') {
+                        panel.style.display = 'none';
+                    } else {
+                        panel.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Score Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Tag</th>
+                <th>Growth Score</th>
+                <th>VC Score</th>
+                <th>Hist Ideas</th>
+                <th>Misc</th>
+                <th>Total Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in sorted_data %}
+            <tr>
+                <td>{{ country.player }}</td>
+                <td>{{ country.tag }}</td>
+                <td>{{ country.growth_score|round(2) }}</td>
+                <td>{{ country.victory_card_score|round(2) }}</td>
+                <td>{{ country.historical_idea_score }}</td>
+                <td>{{ country.misc_score }}</td>
+                <td>{{ country.total_score|round(2) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="details">
+        <h2>Detailed Information</h2>
+        {% for country in sorted_data %}
+        <button class="accordion">{{ country.player }} ({{ country.tag }})</button>
+        <div class="panel">
+            <h3>Growth Score: {{ country.growth_score|round(2) }}</h3>
+            <ul>
+                <li><span class="highlight">Starting Development:</span> {{ country.starting_development }}</li>
+                <li><span class="highlight">Current Development:</span> {{ country.development }}</li>
+            </ul>
+            <h3>Victory Card Score: {{ country.victory_card_score|round(2) }}</h3>
+            <h3>Historical Idea Score: {{ country.historical_idea_score }}</h3>
+            <ul>
+                <li><span class="highlight">Historical Ideas:</span> {{ country.historical_idea_groups|join(', ') }}</li>
+                <li><span class="highlight">Active Idea Groups:</span> {{ country.active_idea_groups|join(', ') }}</li>
+            </ul>
+            <h3>Miscellaneous Score: {{ country.misc_score }}</h3>
+            <ul>
+                {% if most_dev_province.owner == country.tag %}
+                <li><span class="highlight">Most Developed Province:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }}) with {{ most_dev_province.development }} development = 10 points for owning it</li>
+                {% endif %}
+            </ul>
+            <h3>Total Score: {{ country.total_score|round(2) }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2>Most Developed Province</h2>
+    <p><span class="highlight">Name:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }})</p>
+    <p><span class="highlight">Owner:</span> {{ most_dev_province.owner }}</p>
+    <p><span class="highlight">Development:</span> {{ most_dev_province.development }}</p>
+</body>
+</html>
