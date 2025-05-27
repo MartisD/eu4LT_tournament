@@ -1,4 +1,4 @@
-ame: Run Score Calculator
+name: Run Score Calculator
 
 on:
   push:
