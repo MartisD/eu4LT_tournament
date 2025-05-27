@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - master
-jj
+  workflow_dispatch:
+  
 jobs:
   run-score-calculator:
     runs-on: ubuntu-latest
