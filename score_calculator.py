@@ -119,7 +119,7 @@ def extract_country_data(lines, players_countries):
 
     return result
 
-def get_most_dev_province(lines, players_countries):
+def get_most_dev_province(lines):
     in_provinces_block = False
     brace_depth = 0
     current_province = None
@@ -252,6 +252,7 @@ def calculate_country_scores(country_data, most_dev_province):
             continue
 
         growth_score = country['development'] / country['starting_development'] if country['starting_development'] > 0 else 1
+        growth_score = min(growth_score, 20)
         victory_card_score = 0
         if 'victory_card_score' in country:
             victory_card_score = country['victory_card_score'] / 100
@@ -260,7 +261,8 @@ def calculate_country_scores(country_data, most_dev_province):
         if 'active_idea_groups' in country and 'historical_idea_groups' in country:
             for idea in country['active_idea_groups']:
                 if idea.split('=')[0].strip() in country['historical_idea_groups']:
-                    historical_idea_score += int(idea.split('=')[1].strip()) * 5
+                    if int(idea.split('=')[1].strip()) == 7:
+                        historical_idea_score += 5
 
         misc_score = 0
         if most_dev_province.get('owner') == country.get('tag'):
@@ -292,7 +294,7 @@ def main():
                 gamestate_data = gamestate_file.read().decode('utf-8', errors='ignore')
 
         players_countries = extract_players_countries_as_dict(gamestate_data)
-        most_dev_province = get_most_dev_province(gamestate_data.splitlines(), players_countries)
+        most_dev_province = get_most_dev_province(gamestate_data.splitlines())
         country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
         country_data = enrich_country_data_with_ideas(country_data)
         country_data = calculate_country_scores(country_data, most_dev_province)
