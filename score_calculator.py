@@ -230,7 +230,7 @@ def enrich_country_data_with_ideas(country_data):
 
 def generate_html_report(sorted_data, most_dev_province):
     # Load the Jinja2 template
-    env = Environment(loader=FileSystemLoader('./src/templates'))
+    env = Environment(loader=FileSystemLoader('./templates'))
     template = env.get_template('report_template.html')
 
     # Render the template with data
@@ -240,6 +240,41 @@ def generate_html_report(sorted_data, most_dev_province):
     )
 
     return html_content
+
+def calculate_country_scores(country_data, most_dev_province):
+    for country in country_data:
+        if 'development' not in country or 'starting_development' not in country:
+            country['growth_score'] = 0
+            country['victory_card_score'] = 0
+            country['historical_idea_score'] = 0
+            country['misc_score'] = 0
+            country['total_score'] = 0
+            continue
+
+        growth_score = country['development'] / country['starting_development'] if country['starting_development'] > 0 else 1
+        victory_card_score = 0
+        if 'victory_card_score' in country:
+            victory_card_score = country['victory_card_score'] / 100
+
+        historical_idea_score = 0
+        if 'active_idea_groups' in country and 'historical_idea_groups' in country:
+            for idea in country['active_idea_groups']:
+                if idea.split('=')[0].strip() in country['historical_idea_groups']:
+                    historical_idea_score += int(idea.split('=')[1].strip()) * 5
+
+        misc_score = 0
+        if most_dev_province.get('owner') == country.get('tag'):
+            misc_score += 10
+
+        total_score = growth_score + victory_card_score + historical_idea_score + misc_score
+
+        country['growth_score'] = growth_score
+        country['victory_card_score'] = victory_card_score
+        country['historical_idea_score'] = historical_idea_score
+        country['misc_score'] = misc_score
+        country['total_score'] = total_score
+
+    return country_data
 
 def main():
     if len(sys.argv) != 2:
@@ -257,48 +292,13 @@ def main():
                 gamestate_data = gamestate_file.read().decode('utf-8', errors='ignore')
 
         players_countries = extract_players_countries_as_dict(gamestate_data)
-        country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
-
-        country_data = enrich_country_data_with_ideas(country_data)
-
         most_dev_province = get_most_dev_province(gamestate_data.splitlines(), players_countries)
-
-        table = []
-        for country in country_data:
-            if 'development' not in country or 'starting_development' not in country:
-                country['growth_score'] = 0
-                country['victory_card_score'] = 0
-                country['historical_idea_score'] = 0
-                country['misc_score'] = 0
-                country['total_score'] = 0
-                continue
-
-            growth_score = country['development'] / country['starting_development'] if country['starting_development'] > 0 else 1
-            victory_card_score = 0
-            if 'victory_card_score' in country:
-                victory_card_score = country['victory_card_score'] / 100
-
-            historical_idea_score = 0
-            if 'active_idea_groups' in country and 'historical_idea_groups' in country:
-                for idea in country['active_idea_groups']:
-                    if idea.split('=')[0].strip() in country['historical_idea_groups']:
-                        historical_idea_score += int(idea.split('=')[1].strip()) * 5
-
-            misc_score = 0
-            if(most_dev_province['owner'] == country['tag']):
-                misc_score = misc_score + 10
-
-            total_score = growth_score + victory_card_score + historical_idea_score + misc_score
-
-            country['growth_score'] = growth_score
-            country['victory_card_score'] = victory_card_score
-            country['historical_idea_score'] = historical_idea_score
-            country['misc_score'] = misc_score
-            country['total_score'] = total_score
-            table.append(country)
+        country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
+        country_data = enrich_country_data_with_ideas(country_data)
+        country_data = calculate_country_scores(country_data, most_dev_province)
 
         sorted_data = sorted(
-            table,
+            country_data,
             key=lambda x: (x['player'] != 'Unknown', x['total_score']),
             reverse=True
         )

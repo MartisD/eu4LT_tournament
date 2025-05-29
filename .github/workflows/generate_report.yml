@@ -24,7 +24,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install jinja2
       - name: Run score_calculator.py
-        run: python src/score_calculator.py save.eu4
+        run: python score_calculator.py save.eu4
       - name: Commit and push index.html
         run: |
           git config --local user.email "actions@github.com"
