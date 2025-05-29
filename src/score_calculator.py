@@ -214,7 +214,7 @@ def enrich_country_data_with_ideas(country_data):
 
         file_path = filename
 
-        with open('eu4_data/'+ file_path, 'r') as f:
+        with open('eu4_data/'+ file_path, 'r', encoding='utf-8', errors='ignore') as f:
             contents = f.read()
 
         match = re.search(r'historical_idea_groups\s*=\s*\{([^}]+)\}', contents)
