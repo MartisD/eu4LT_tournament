@@ -347,9 +347,16 @@ def main():
         country_data = enrich_country_data_with_ideas(country_data)
         country_data = calculate_country_scores(country_data, most_dev_province)
 
+        # priority for players
+        # sorted_data = sorted(
+        #     country_data,
+        #     key=lambda x: (x['player'] != 'Unknown', x['total_score']),
+        #     reverse=True
+        # )
+
         sorted_data = sorted(
             country_data,
-            key=lambda x: (x['player'] != 'Unknown', x['total_score']),
+            key=lambda x: (x['total_score']),
             reverse=True
         )
 
