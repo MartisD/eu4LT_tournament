@@ -244,13 +244,14 @@ def add_modifier_data(country_data):
 
     return filtered_countries
 
-def generate_html_report(sorted_data, most_dev_province):
+def generate_html_report(date, sorted_data, most_dev_province):
     # Load the Jinja2 template
     env = Environment(loader=FileSystemLoader('./templates'))
     template = env.get_template('report_template.html')
 
     # Render the template with data
     html_content = template.render(
+        date=date,
         sorted_data=sorted_data,
         most_dev_province=most_dev_province
     )
@@ -317,6 +318,13 @@ def main():
             with z.open('gamestate') as gamestate_file:
                 gamestate_data = gamestate_file.read().decode('utf-8', errors='ignore')
 
+        with zipfile.ZipFile(zip_bytes) as z:
+            with z.open('meta') as gamestate_file:
+                meta_data = gamestate_file.read().decode('utf-8', errors='ignore')
+
+        date = re.search(r'date=.+', meta_data)
+        date = date.group(0).split("=")[1] if date else "Unknown date"
+
         players_countries = extract_players_countries_as_dict(gamestate_data)
         most_dev_province = get_most_dev_province(gamestate_data.splitlines())
         country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
@@ -331,7 +339,7 @@ def main():
         )
         print(sorted_data[:1])
 
-        html_report = generate_html_report(sorted_data, most_dev_province)
+        html_report = generate_html_report(date, sorted_data, most_dev_province)
 
         with open('index.html', 'w') as report_file:
             report_file.write(html_report)
