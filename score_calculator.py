@@ -259,7 +259,7 @@ def add_modifier_data(country_data):
         modifier_data = json.load(f)
     filtered_countries = []
     for country in country_data:
-        modifiers = modifier_data.get(country['tag'])
+        modifiers = modifier_data.get(country['original_tag'], None)
         if modifiers is not None:
             country['modifiers'] = modifiers
             # print(f"[+] Added modifier data for {country['tag']}")
