@@ -1,376 +1,376 @@
 {
     "CAS": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "ENG": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "BUR": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "FRA": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "POR": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "HAB": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "HES": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "HSA": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MLO": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "SWI": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "SWE": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MOS": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
-	    "POL": [
+	    "PLC": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "HUN": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "TUR": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MAM": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "TIM": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MOR": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MAL": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "ETH": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "MER": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ],
 	    "BAH": [
         {
-            "name": "discipline",
-            "value": "15%",
-            "count": 2
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "trade efficiency",
-            "value": "20%",
-            "count": 4
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
         },
         {
-            "name": "core creation cost",
-            "value": "30%",
-            "count": 3
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
         }
     ]
 }

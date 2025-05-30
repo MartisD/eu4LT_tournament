@@ -67,6 +67,8 @@ def extract_country_data(lines, players_countries):
                     current_data = {
                         'tag': current_tag,
                         'player': tag_to_player[current_tag] if current_tag in tag_to_player else 'Unknown',
+                        'victory_cards': [],
+                        'victory_card_score': 0.0,
                     }
 
                     if(len(current_tag) != 3):
@@ -93,9 +95,25 @@ def extract_country_data(lines, players_countries):
                         val = line.split('=')[1].strip()
                         current_data['starting_development'] = float(val)
 
+                    elif parent_block == 'victory_card' and line.startswith('area') and brace_depth == 3:
+                        val = line.split('=')[1].strip()
+
+                        current_data['victory_cards'].append({
+                            'area': val,
+                            'score': 0.0,
+                            'was_fulfilled': 'false',
+                        })
+
                     elif parent_block == 'victory_card' and line.startswith('score') and brace_depth == 3:
                         val = line.split('=')[1].strip()
-                        current_data['victory_card_score'] = float(val)
+
+                        current_data['victory_cards'][-1]['score'] = float(val)
+                        current_data['victory_card_score'] = current_data['victory_card_score'] + float(val)
+
+                    elif parent_block == 'victory_card' and line.startswith('was_fulfilled') and brace_depth == 3:
+                        val = line.split('=')[1].strip()
+
+                        current_data['victory_cards'][-1]['was_fulfilled'] = val
                         parent_block = None
 
                     elif parent_block == 'active_idea_groups' and not line.startswith('}')  and brace_depth == 3:
@@ -269,7 +287,7 @@ def calculate_country_scores(country_data, most_dev_province):
 
         growth_score = country['development'] / (country['starting_development'] if country['starting_development'] > 0 else 1)
         growth_score = min(growth_score, 20)
-        victory_card_score = 0
+        victory_card_score = 0.0
         if 'victory_card_score' in country:
             victory_card_score = country['victory_card_score'] / 100
 
@@ -334,7 +352,6 @@ def main():
             key=lambda x: (x['player'] != 'Unknown', x['total_score']),
             reverse=True
         )
-        print(sorted_data[:1])
 
         html_report = generate_html_report(date, sorted_data, most_dev_province)
 

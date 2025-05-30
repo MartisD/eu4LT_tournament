@@ -78,6 +78,13 @@
                 <li><span class="highlight">Current Development:</span> {{ country.development }}</li>
             </ul>
             <h3>Victory Card Score: {{ country.victory_card_score|round(2) }}</h3>
+            <ul>
+                {% for card in country.victory_cards %}
+                <li><span class="highlight">Area:</span>{{card.area}}</li>
+                <li><span class="highlight">Score:</span>{{card.score}}</li>
+                <li><span class="highlight">Was fulfilled:</span>{{card.was_fulfilled}}</li>
+                {% endfor %}
+            </ul>
             <h3>Historical Idea Score: {{ country.historical_idea_score }}</h3>
             <ul>
                 <li><span class="highlight">Historical Ideas:</span> {{ country.historical_idea_groups|join(', ') }}</li>
