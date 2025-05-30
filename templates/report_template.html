@@ -41,7 +41,6 @@
             <tr>
                 <th>Player</th>
                 <th>Tag</th>
-                <th>Name</th>
                 <th>Growth Score</th>
                 <th>VC Score</th>
                 <th>Hist Ideas</th>
@@ -54,8 +53,7 @@
             {% for country in sorted_data %}
             <tr>
                 <td>{{ country.player }}</td>
-                <td>{{ country.tag }}</td>
-                <td>{{ country.name }}</td>
+                <td>{{ country.tag }}  {% if country.original_tag != country.tag %} (Original tag - {{country.original_tag}}){% endif %}</td>
                 <td>{{ country.growth_score|round(2) }}</td>
                 <td>{{ country.victory_card_score|round(2) }}</td>
                 <td>{{ country.historical_idea_score }}</td>
@@ -70,8 +68,11 @@
     <div class="details">
         <h2>Detailed Information</h2>
         {% for country in sorted_data %}
-        <button class="accordion">{{ country.player }} ({{ country.tag }} - {{country.name}})</button>
+        <button class="accordion">{{ country.player }} ({{ country.tag }})</button>
         <div class="panel">
+            {% if country.original_tag != country.tag %}
+            <h3>Original tag: {{ country.original_tag }}</h3>
+            {% endif %}
             <h3>Growth Score: {{ country.growth_score|round(2) }}</h3>
             <ul>
                 <li><span class="highlight">Starting Development:</span> {{ country.starting_development }}</li>

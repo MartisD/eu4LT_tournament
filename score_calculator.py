@@ -66,6 +66,7 @@ def extract_country_data(lines, players_countries):
 
                     current_data = {
                         'tag': current_tag,
+                        'original_tag': current_tag,
                         'player': tag_to_player[current_tag] if current_tag in tag_to_player else 'Unknown',
                         'victory_cards': [],
                         'victory_card_score': 0.0,
@@ -94,6 +95,10 @@ def extract_country_data(lines, players_countries):
                     elif line.startswith('starting_development') and brace_depth == 3:
                         val = line.split('=')[1].strip()
                         current_data['starting_development'] = float(val)
+
+                    elif line.startswith('changed_tag_from') and brace_depth == 4:
+                        val = line.split('=')[1].strip("\"")
+                        current_data['original_tag'] = val
 
                     elif parent_block == 'victory_card' and line.startswith('area') and brace_depth == 3:
                         val = line.split('=')[1].strip()
@@ -225,7 +230,7 @@ def enrich_country_data_with_ideas(country_data):
                 tag_to_file[tag] = path
 
     for entry in country_data:
-        tag = entry.get('tag')
+        tag = entry.get('original_tag', entry.get('tag', ''))
         filename = tag_to_file.get(tag)
         entry['name'] = filename.split('/')[-1].replace('.txt', '').replace('_', ' ').title() if filename else 'Unknown'
 
@@ -257,8 +262,8 @@ def add_modifier_data(country_data):
         modifiers = modifier_data.get(country['tag'])
         if modifiers is not None:
             country['modifiers'] = modifiers
-            print(f"[+] Added modifier data for {country['tag']}")
-            print(f"    Modifiers: {modifiers}")
+            # print(f"[+] Added modifier data for {country['tag']}")
+            # print(f"    Modifiers: {modifiers}")
             filtered_countries.append(country)
     # print(json.dumps(filtered_countries, indent=4))
 
