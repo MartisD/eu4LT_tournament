@@ -1,0 +1,380 @@
+{
+    "CAS": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "ENG": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "BUR": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "FRA": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "POR": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "HAB": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "HES": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "HSA": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "MLO": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "SWI": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ]
+	,
+	    "SWE": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ]
+	,
+	    "MOS": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ]
+	,
+	    "POL": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ]
+	,
+	    "HUN": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "TUR": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "MAM": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "TIM": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "MOR": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "MAL": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "ETH": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "MER": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ],
+	    "BAH": [
+        {
+            "name": "discipline",
+            "value": "15%",
+            "count": 2
+        },
+        {
+            "name": "trade efficiency",
+            "value": "20%",
+            "count": 4
+        },
+        {
+            "name": "core creation cost",
+            "value": "30%",
+            "count": 3
+        }
+    ]
+}

@@ -41,10 +41,12 @@
             <tr>
                 <th>Player</th>
                 <th>Tag</th>
+                <th>Name</th>
                 <th>Growth Score</th>
                 <th>VC Score</th>
                 <th>Hist Ideas</th>
                 <th>Misc</th>
+                <th>Modifier</th>
                 <th>Total Score</th>
             </tr>
         </thead>
@@ -53,10 +55,12 @@
             <tr>
                 <td>{{ country.player }}</td>
                 <td>{{ country.tag }}</td>
+                <td>{{ country.name }}</td>
                 <td>{{ country.growth_score|round(2) }}</td>
                 <td>{{ country.victory_card_score|round(2) }}</td>
                 <td>{{ country.historical_idea_score }}</td>
                 <td>{{ country.misc_score }}</td>
+                <td>{{ country.modifier_score }}</td>
                 <td>{{ country.total_score|round(2) }}</td>
             </tr>
             {% endfor %}
@@ -66,7 +70,7 @@
     <div class="details">
         <h2>Detailed Information</h2>
         {% for country in sorted_data %}
-        <button class="accordion">{{ country.player }} ({{ country.tag }})</button>
+        <button class="accordion">{{ country.player }} ({{ country.tag }} - {{country.name}})</button>
         <div class="panel">
             <h3>Growth Score: {{ country.growth_score|round(2) }}</h3>
             <ul>
@@ -84,6 +88,12 @@
                 {% if most_dev_province.owner == country.tag %}
                 <li><span class="highlight">Most Developed Province:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }}) with {{ most_dev_province.development }} development = 10 points for owning it</li>
                 {% endif %}
+            </ul>
+            <h3>Modifier Score: {{ country.modifier_score }}</h3>
+            <ul>
+                {% for modifier in country.modifiers %}
+                <li><span class="highlight">Modifier:</span> {{modifier.name}}, <span class="highlight">Value:</span> {{modifier.value}}, <span class="highlight">Count:</span> {{modifier.count}} </span></li>
+                {% endfor %}
             </ul>
             <h3>Total Score: {{ country.total_score|round(2) }}</h3>
         </div>

@@ -2,6 +2,7 @@ import sys
 import zipfile
 import io
 import re
+import json
 from jinja2 import Environment, FileSystemLoader
 
 class color:
@@ -208,6 +209,7 @@ def enrich_country_data_with_ideas(country_data):
     for entry in country_data:
         tag = entry.get('tag')
         filename = tag_to_file.get(tag)
+        entry['name'] = filename.split('/')[-1].replace('.txt', '').replace('_', ' ').title() if filename else 'Unknown'
 
         if not filename:
             continue
@@ -227,6 +229,20 @@ def enrich_country_data_with_ideas(country_data):
             entry['historical_idea_groups'] = []
 
     return country_data
+
+def add_modifier_data(country_data):
+    modifier_data = {}
+    with open('./modifier_scores.json', 'r', encoding='utf-8') as f:
+        modifier_data = json.load(f)
+    filtered_countries = []
+    for country in country_data:
+        modifiers = modifier_data.get(country['tag'])
+        if modifiers is not None:
+            country['modifiers'] = modifiers
+            print(f"[+] Added modifier data for {country['tag']}")
+            filtered_countries.append(country)
+
+    return filtered_countries
 
 def generate_html_report(sorted_data, most_dev_province):
     # Load the Jinja2 template
@@ -249,6 +265,8 @@ def calculate_country_scores(country_data, most_dev_province):
             country['historical_idea_score'] = 0
             country['misc_score'] = 0
             country['total_score'] = 0
+            country['modifiers'] = []
+            country['modifier_score'] = 0
             continue
 
         growth_score = country['development'] / country['starting_development'] if country['starting_development'] > 0 else 1
@@ -259,21 +277,27 @@ def calculate_country_scores(country_data, most_dev_province):
 
         historical_idea_score = 0
         if 'active_idea_groups' in country and 'historical_idea_groups' in country:
-            for idea in country['active_idea_groups']:
-                if idea.split('=')[0].strip() in country['historical_idea_groups']:
+            for index, idea in enumerate(country['active_idea_groups']):
+                if idea.split('=')[0].strip() == country['historical_idea_groups'][index-1]:
                     if int(idea.split('=')[1].strip()) == 7:
-                        historical_idea_score += 5
+                        historical_idea_score += 15
 
         misc_score = 0
         if most_dev_province.get('owner') == country.get('tag'):
             misc_score += 10
 
-        total_score = growth_score + victory_card_score + historical_idea_score + misc_score
+        modifier_score = 0
+        if 'modifiers' in country:
+            for modifier in country['modifiers']:
+                modifier_score += modifier.get('count', 0) * 3
+
+        total_score = growth_score + victory_card_score + historical_idea_score + misc_score + modifier_score
 
         country['growth_score'] = growth_score
         country['victory_card_score'] = victory_card_score
         country['historical_idea_score'] = historical_idea_score
         country['misc_score'] = misc_score
+        country['modifier_score'] = modifier_score
         country['total_score'] = total_score
 
     return country_data
@@ -296,6 +320,7 @@ def main():
         players_countries = extract_players_countries_as_dict(gamestate_data)
         most_dev_province = get_most_dev_province(gamestate_data.splitlines())
         country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
+        country_data = add_modifier_data(country_data)
         country_data = enrich_country_data_with_ideas(country_data)
         country_data = calculate_country_scores(country_data, most_dev_province)
 
@@ -304,8 +329,9 @@ def main():
             key=lambda x: (x['player'] != 'Unknown', x['total_score']),
             reverse=True
         )
+        print(sorted_data[:1])
 
-        html_report = generate_html_report(sorted_data[:10], most_dev_province)
+        html_report = generate_html_report(sorted_data, most_dev_province)
 
         with open('index.html', 'w') as report_file:
             report_file.write(html_report)
