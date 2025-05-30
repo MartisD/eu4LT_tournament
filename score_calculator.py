@@ -230,9 +230,10 @@ def enrich_country_data_with_ideas(country_data):
                 tag_to_file[tag] = path
 
     for entry in country_data:
-        tag = entry.get('original_tag', entry.get('tag', ''))
-        filename = tag_to_file.get(tag)
-        entry['name'] = filename.split('/')[-1].replace('.txt', '').replace('_', ' ').title() if filename else 'Unknown'
+        original_tag = entry.get('original_tag')
+        tag = entry.get('tag')
+        filename = tag_to_file.get(original_tag)
+        entry['name'] = tag_to_file.get(tag).split('/')[-1].replace('.txt', '').replace('_', ' ').title() if filename else 'Unknown'
 
         if not filename:
             continue
