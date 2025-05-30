@@ -240,7 +240,9 @@ def add_modifier_data(country_data):
         if modifiers is not None:
             country['modifiers'] = modifiers
             print(f"[+] Added modifier data for {country['tag']}")
+            print(f"    Modifiers: {modifiers}")
             filtered_countries.append(country)
+    # print(json.dumps(filtered_countries, indent=4))
 
     return filtered_countries
 
@@ -260,17 +262,12 @@ def generate_html_report(date, sorted_data, most_dev_province):
 
 def calculate_country_scores(country_data, most_dev_province):
     for country in country_data:
-        if 'development' not in country or 'starting_development' not in country:
-            country['growth_score'] = 0
-            country['victory_card_score'] = 0
-            country['historical_idea_score'] = 0
-            country['misc_score'] = 0
-            country['total_score'] = 0
-            country['modifiers'] = []
-            country['modifier_score'] = 0
-            continue
+        if 'development' not in country:
+            country['development'] = 0.0
+        if 'starting_development' not in country:
+            country['starting_development'] = 0.0
 
-        growth_score = country['development'] / country['starting_development'] if country['starting_development'] > 0 else 1
+        growth_score = country['development'] / (country['starting_development'] if country['starting_development'] > 0 else 1)
         growth_score = min(growth_score, 20)
         victory_card_score = 0
         if 'victory_card_score' in country:
