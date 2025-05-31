@@ -98,6 +98,12 @@
                 {% if most_dev_province.owner == country.tag %}
                 <li><span class="highlight">Most Developed Province:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }}) with {{ most_dev_province.development }} development = 10 points for owning it</li>
                 {% endif %}
+                {% if country.tag == hre_data.emperor %}
+                <li><span class="highlight">HRE Emperor:</span> 10 Points </li>
+                {% endif %}
+                {% if country.tag == china_data.emperor %}
+                <li><span class="highlight">China Emperor:</span> 3 Points </li>
+                {% endif %}
             </ul>
             <h3>Modifier Score: {{ country.modifier_score }}</h3>
             <ul>

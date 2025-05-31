@@ -5,18 +5,6 @@ import re
 import json
 from jinja2 import Environment, FileSystemLoader
 
-class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   DARKCYAN = '\033[36m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
-
 def extract_players_countries_as_dict(gamestate_data):
     match = re.search(r'players_countries\s*=\s*\{([^}]+)\}', gamestate_data, re.DOTALL)
     if not match:
@@ -37,7 +25,7 @@ def extract_players_countries_as_dict(gamestate_data):
 
     return result
 
-def extract_country_data(lines, players_countries):
+def extract_country_data(gamestate_data, players_countries):
     in_countries_block = False
     brace_depth = 0
     current_tag = None
@@ -48,8 +36,8 @@ def extract_country_data(lines, players_countries):
     tag_to_player = {tag: player for player, tag in players_countries.items()}
 
     i = 0
-    while i < len(lines):
-        line = lines[i].strip()
+    while i < len(gamestate_data):
+        line = gamestate_data[i].strip()
 
         if not in_countries_block and line.startswith('countries'):
             if '{' in line:
@@ -143,7 +131,7 @@ def extract_country_data(lines, players_countries):
 
     return result
 
-def get_most_dev_province(lines):
+def get_most_dev_province(gamestate_data):
     in_provinces_block = False
     brace_depth = 0
     current_province = None
@@ -151,8 +139,8 @@ def get_most_dev_province(lines):
     result = {'development': 0.0}
 
     i = 0
-    while i < len(lines):
-        line = lines[i].strip()
+    while i < len(gamestate_data):
+        line = gamestate_data[i].strip()
 
         if not in_provinces_block:
             brace_depth += line.count('{')
@@ -216,6 +204,76 @@ def get_most_dev_province(lines):
         i += 1
     return result
 
+def get_empire_data(gamestate_data):
+    current_block = None
+    brace_depth = 0
+    HRE_data = {
+        'hre_dismantled': False,
+        'emperor': None,
+        'level': 0,
+    }
+    CHINA_data = {
+        'emperor': None,
+        'level': 0,
+    }
+
+    i = 0
+    while i < len(gamestate_data):
+        line = gamestate_data[i].strip()
+
+        if current_block is None:
+            brace_depth += line.count('{')
+            brace_depth -= line.count('}')
+            if line.startswith('empire={') and brace_depth == 1:
+                current_block = 'HRE'
+                brace_depth = 1
+                i += 1
+                continue
+            if line.startswith('celestial_empire={') and brace_depth == 1:
+                current_block = 'CHINA'
+                brace_depth = 1
+                i += 1
+                continue
+
+        if current_block == 'HRE':
+            if line.startswith('hre_dismantled='):
+                val = line.split('=')[1].strip('""')
+                HRE_data['hre_dismantled'] = val
+                if val == 'yes':
+                    current_block = None
+                    brace_depth = 1
+
+            elif line.startswith('emperor='):
+                val = line.split('=')[1].strip('""')
+                HRE_data['emperor'] = val
+
+            elif line.startswith('passed_reform='):
+                HRE_data['level'] += 1
+
+            brace_depth += line.count('{')
+            brace_depth -= line.count('}')
+
+            if brace_depth == 0:
+                current_block = None
+
+        if current_block == 'CHINA':
+
+            if line.startswith('emperor='):
+                val = line.split('=')[1].strip('""')
+                CHINA_data['emperor'] = val
+
+            elif line.startswith('passed_reform='):
+                CHINA_data['level'] += 1
+
+            brace_depth += line.count('{')
+            brace_depth -= line.count('}')
+
+            if brace_depth == 0:
+                current_block = None
+
+        i += 1
+    return HRE_data, CHINA_data
+
 def enrich_country_data_with_ideas(country_data):
     tag_to_file = {}
 
@@ -255,22 +313,38 @@ def enrich_country_data_with_ideas(country_data):
     return country_data
 
 def add_modifier_data(country_data):
-    modifier_data = {}
+    import json
     with open('./modifier_scores.json', 'r', encoding='utf-8') as f:
         modifier_data = json.load(f)
-    filtered_countries = []
+
+    # Group countries by original_tag
+    tag_to_countries = {}
     for country in country_data:
-        modifiers = modifier_data.get(country['original_tag'], None)
-        if modifiers is not None:
-            country['modifiers'] = modifiers
-            # print(f"[+] Added modifier data for {country['tag']}")
-            # print(f"    Modifiers: {modifiers}")
-            filtered_countries.append(country)
-    # print(json.dumps(filtered_countries, indent=4))
+        orig_tag = country['original_tag']
+        tag_to_countries.setdefault(orig_tag, []).append(country)
+
+    filtered_countries = []
+    for orig_tag, countries in tag_to_countries.items():
+        # Filter only those with modifier data
+        countries_with_mod = [c for c in countries if modifier_data.get(orig_tag) is not None]
+        if not countries_with_mod:
+            continue
+
+        # Prefer countries where original_tag != tag
+        changed_tag_countries = [c for c in countries_with_mod if c['original_tag'] != c['tag']]
+        if changed_tag_countries:
+            for country in changed_tag_countries:
+                country['modifiers'] = modifier_data[orig_tag]
+                filtered_countries.append(country)
+        else:
+            # If none changed, add all unchanged with modifiers
+            for country in countries_with_mod:
+                country['modifiers'] = modifier_data[orig_tag]
+                filtered_countries.append(country)
 
     return filtered_countries
 
-def generate_html_report(date, sorted_data, most_dev_province):
+def generate_html_report(date, sorted_data, most_dev_province, hre_data, china_data):
     # Load the Jinja2 template
     env = Environment(loader=FileSystemLoader('./templates'))
     template = env.get_template('report_template.html')
@@ -279,12 +353,15 @@ def generate_html_report(date, sorted_data, most_dev_province):
     html_content = template.render(
         date=date,
         sorted_data=sorted_data,
-        most_dev_province=most_dev_province
+        most_dev_province=most_dev_province,
+        hre_data=hre_data,
+        china_data=china_data
+
     )
 
     return html_content
 
-def calculate_country_scores(country_data, most_dev_province):
+def calculate_country_scores(country_data, most_dev_province, hre_data, china_data):
     for country in country_data:
         if 'development' not in country:
             country['development'] = 0.0
@@ -307,6 +384,12 @@ def calculate_country_scores(country_data, most_dev_province):
         misc_score = 0
         if most_dev_province.get('owner') == country.get('tag'):
             misc_score += 10
+
+        if hre_data.get('emperor') == country.get('tag'):
+            misc_score += 10
+
+        if china_data.get('emperor') == country.get('tag'):
+            misc_score += 3
 
         modifier_score = 0
         if 'modifiers' in country:
@@ -351,7 +434,10 @@ def main():
         country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
         country_data = add_modifier_data(country_data)
         country_data = enrich_country_data_with_ideas(country_data)
-        country_data = calculate_country_scores(country_data, most_dev_province)
+        HRE_data, CHINA_data = get_empire_data(gamestate_data.splitlines())
+        
+
+        country_data = calculate_country_scores(country_data, most_dev_province, HRE_data, CHINA_data)
 
         # priority for players
         # sorted_data = sorted(
@@ -366,7 +452,7 @@ def main():
             reverse=True
         )
 
-        html_report = generate_html_report(date, sorted_data, most_dev_province)
+        html_report = generate_html_report(date, sorted_data, most_dev_province, HRE_data, CHINA_data)
 
         with open('index.html', 'w') as report_file:
             report_file.write(html_report)
