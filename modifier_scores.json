@@ -271,23 +271,6 @@
             "count": 0
         }
     ],
-	    "TIM": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
 	    "MOR": [
         {
             "name": "placeholder1",
@@ -374,6 +357,23 @@
         }
     ],
 	    "BNG": [
+        {
+            "name": "placeholder1",
+            "value": "0",
+            "count": 0
+        },
+        {
+            "name": "placeholder2",
+            "value": "0",
+            "count": 0
+        },
+        {
+            "name": "placeholder3",
+            "value": "0",
+            "count": 0
+        }
+    ],
+	    "NAP": [
         {
             "name": "placeholder1",
             "value": "0",

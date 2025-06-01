@@ -355,7 +355,6 @@ def add_modifier_data(country_data):
     with open('./modifier_scores.json', 'r', encoding='utf-8') as f:
         modifier_data = json.load(f)
 
-    # Group countries by original_tag
     tag_to_countries = {}
     for country in country_data:
         orig_tag = country['original_tag']
@@ -363,19 +362,16 @@ def add_modifier_data(country_data):
 
     filtered_countries = []
     for orig_tag, countries in tag_to_countries.items():
-        # Filter only those with modifier data
         countries_with_mod = [c for c in countries if modifier_data.get(orig_tag) is not None]
         if not countries_with_mod:
             continue
 
-        # Prefer countries where original_tag != tag
         changed_tag_countries = [c for c in countries_with_mod if c['original_tag'] != c['tag']]
         if changed_tag_countries:
             for country in changed_tag_countries:
                 country['modifiers'] = modifier_data[orig_tag]
                 filtered_countries.append(country)
         else:
-            # If none changed, add all unchanged with modifiers
             for country in countries_with_mod:
                 country['modifiers'] = modifier_data[orig_tag]
                 filtered_countries.append(country)
@@ -383,11 +379,9 @@ def add_modifier_data(country_data):
     return filtered_countries
 
 def generate_html_report(date, sorted_data, most_dev_province, hre_data, china_data, losses_data):
-    # Load the Jinja2 template
     env = Environment(loader=FileSystemLoader('./templates'))
     template = env.get_template('report_template.html')
 
-    # Render the template with data
     html_content = template.render(
         date=date,
         sorted_data=sorted_data,
