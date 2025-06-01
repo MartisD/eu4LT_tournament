@@ -101,23 +101,6 @@
             "count": 0
         }
     ],
-	    "HES": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
 	    "BRA": [
         {
             "name": "placeholder1",
@@ -153,23 +136,6 @@
         }
     ],
 	    "SWI": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
-	    "SWE": [
         {
             "name": "placeholder1",
             "value": "0",
@@ -288,23 +254,6 @@
             "count": 0
         }
     ],
-	    "MAL": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
 	    "ETH": [
         {
             "name": "placeholder1",
@@ -357,23 +306,6 @@
         }
     ],
 	    "BNG": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
-	    "NAP": [
         {
             "name": "placeholder1",
             "value": "0",
