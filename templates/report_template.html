@@ -110,7 +110,7 @@
                 <li><span class="highlight">HRE Reforms for electors:</span> {{hre_data.level}} * 5 points </li>
                 {% endif %}
                 {% if country.tag == losses_data.tag %}
-                <li><span class="highlight">Highest losses in the game ({{losses_data.losses}}):</span> 10 points </li>
+                <li><span class="highlight">Highest combat losses in the game ({{losses_data.losses}}):</span> 10 points </li>
                 {% endif %}
             </ul>
             <h3>Modifier Score: {{ country.modifier_score }}</h3>
@@ -128,9 +128,9 @@
     <p><span class="highlight">Name:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }})</p>
     <p><span class="highlight">Owner:</span> {{ most_dev_province.owner }}</p>
     <p><span class="highlight">Development:</span> {{ most_dev_province.development }}</p>
-    <h2>Highest losses</h2>
+    <h2>Highest losses in combat</h2>
     <p><span class="highlight">TAG:</span> {{losses_data.tag}}</p>
-    <p><span class="highlight">losses:</span> {{ losses_data.losses }}</p>
+    <p><span class="highlight">Losses:</span> {{ losses_data.losses }}</p>
     <h2>HRE DATA</h2>
     <p><span class="highlight">Emperor:</span> {{hre_data.emperor}}</p>
     <p><span class="highlight">Reforms passed:</span> {{ hre_data.level }}</p>
