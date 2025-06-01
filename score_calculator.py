@@ -33,6 +33,7 @@ def extract_country_data(gamestate_data, players_countries):
     current_data = {}
     result = []
 
+
     tag_to_player = {tag: player for player, tag in players_countries.items()}
 
     i = 0
@@ -58,6 +59,7 @@ def extract_country_data(gamestate_data, players_countries):
                         'player': tag_to_player[current_tag] if current_tag in tag_to_player else 'Unknown',
                         'victory_cards': [],
                         'victory_card_score': 0.0,
+                        'losses': 0,
                     }
 
                     if(len(current_tag) != 3):
@@ -113,6 +115,15 @@ def extract_country_data(gamestate_data, players_countries):
                         val = line
                         current_data['active_idea_groups'].append(val)
 
+                    elif brace_depth == 3 and line.startswith('members'):
+                        parent_block = 'losses'
+                    
+                    elif parent_block == 'losses' and brace_depth == 4:
+                        val = line.split(" ")
+                        if len(val) >= 7:
+                            current_data['losses'] += int(val[0]) + int(val[3]) + int(val[6])
+                        parent_block = None
+
                 previous_brace_depth = brace_depth
                 brace_depth += line.count('{')
                 brace_depth -= line.count('}')
@@ -128,6 +139,20 @@ def extract_country_data(gamestate_data, players_countries):
                     break
 
         i += 1
+
+    return result
+
+def get_country_with_most_losses(country_data):
+    result = {
+        'tag': None,
+        'losses': -1
+    }
+
+    for country in country_data:
+        losses = country.get('losses', 0)
+        if losses > result['losses']:
+            result['losses'] = losses
+            result['tag'] = country['tag']
 
     return result
 
@@ -207,10 +232,12 @@ def get_most_dev_province(gamestate_data):
 def get_empire_data(gamestate_data):
     current_block = None
     brace_depth = 0
+    electors_block = False
     HRE_data = {
         'hre_dismantled': False,
         'emperor': None,
         'level': 0,
+        'electors': [],
     }
     CHINA_data = {
         'emperor': None,
@@ -249,6 +276,15 @@ def get_empire_data(gamestate_data):
 
             elif line.startswith('passed_reform='):
                 HRE_data['level'] += 1
+            
+            elif line.startswith('electors='):
+                electors_block = True
+            
+            elif electors_block and brace_depth == 2:
+                val = line.split(" ")
+                HRE_data['electors'] = val
+                electors_block = False
+
 
             brace_depth += line.count('{')
             brace_depth -= line.count('}')
@@ -344,7 +380,7 @@ def add_modifier_data(country_data):
 
     return filtered_countries
 
-def generate_html_report(date, sorted_data, most_dev_province, hre_data, china_data):
+def generate_html_report(date, sorted_data, most_dev_province, hre_data, china_data, losses_data):
     # Load the Jinja2 template
     env = Environment(loader=FileSystemLoader('./templates'))
     template = env.get_template('report_template.html')
@@ -355,13 +391,13 @@ def generate_html_report(date, sorted_data, most_dev_province, hre_data, china_d
         sorted_data=sorted_data,
         most_dev_province=most_dev_province,
         hre_data=hre_data,
-        china_data=china_data
-
+        china_data=china_data,
+        losses_data=losses_data
     )
 
     return html_content
 
-def calculate_country_scores(country_data, most_dev_province, hre_data, china_data):
+def calculate_country_scores(country_data, most_dev_province, hre_data, china_data, losses_data):
     for country in country_data:
         if 'development' not in country:
             country['development'] = 0.0
@@ -385,11 +421,18 @@ def calculate_country_scores(country_data, most_dev_province, hre_data, china_da
         if most_dev_province.get('owner') == country.get('tag'):
             misc_score += 10
 
+        if country.get('tag') == losses_data['tag']:
+            misc_score += 10
+
         if hre_data.get('emperor') == country.get('tag'):
             misc_score += 10
 
         if china_data.get('emperor') == country.get('tag'):
             misc_score += 3
+            misc_score += china_data.get('level', 0) * 1
+
+        if country.get('tag') in hre_data.get('electors') or hre_data.get('emperor') == country.get('tag'):
+            misc_score += hre_data.get('level', 0) * 5
 
         modifier_score = 0
         if 'modifiers' in country:
@@ -435,9 +478,10 @@ def main():
         country_data = add_modifier_data(country_data)
         country_data = enrich_country_data_with_ideas(country_data)
         HRE_data, CHINA_data = get_empire_data(gamestate_data.splitlines())
+        losses_data = get_country_with_most_losses(country_data)
         
 
-        country_data = calculate_country_scores(country_data, most_dev_province, HRE_data, CHINA_data)
+        country_data = calculate_country_scores(country_data, most_dev_province, HRE_data, CHINA_data, losses_data)
 
         # priority for players
         # sorted_data = sorted(
@@ -452,7 +496,7 @@ def main():
             reverse=True
         )
 
-        html_report = generate_html_report(date, sorted_data, most_dev_province, HRE_data, CHINA_data)
+        html_report = generate_html_report(date, sorted_data, most_dev_province, HRE_data, CHINA_data, losses_data)
 
         with open('index.html', 'w') as report_file:
             report_file.write(html_report)
