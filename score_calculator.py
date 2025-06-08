@@ -446,6 +446,37 @@ def calculate_country_scores(country_data, most_dev_province, hre_data, china_da
 
     return country_data
 
+def print_country_table(sorted_data):
+    # Table header
+    header = [
+        "No", "Player", "Tag", "Country Name", "Growth Score", "VC Score",
+        "Hist Ideas", "Misc", "Modifier", "Total Score"
+    ]
+    # Calculate column widths
+    col_widths = [4, 15, 18, 20, 13, 9, 10, 8, 10, 12]
+    # Print header
+    print("".join(str(header[i]).ljust(col_widths[i]) for i in range(len(header))))
+    print("-" * sum(col_widths))
+    # Print rows
+    for idx, country in enumerate(sorted_data, 1):
+        tag_str = country['tag']
+        if country.get('original_tag') and country['original_tag'] != country['tag']:
+            tag_str += f" (Original - {country['original_tag']})"
+        row = [
+            str(idx),
+            str(country.get('player', '')),
+            tag_str,
+            str(country.get('name', '')),
+            f"{country.get('growth_score', 0):.2f}",
+            f"{country.get('victory_card_score', 0):.2f}",
+            str(country.get('historical_idea_score', '')),
+            str(country.get('misc_score', '')),
+            str(country.get('modifier_score', '')),
+            f"{country.get('total_score', 0):.2f}",
+        ]
+        print("".join(str(row[i]).ljust(col_widths[i]) for i in range(len(row))))
+
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: python score_calculator.py <save_file.eu>")
@@ -493,6 +524,9 @@ def main():
         )
 
         html_report = generate_html_report(date, sorted_data, most_dev_province, HRE_data, CHINA_data, losses_data)
+
+        # print_country_table(sorted_data)
+
 
         with open('index.html', 'w') as report_file:
             report_file.write(html_report)

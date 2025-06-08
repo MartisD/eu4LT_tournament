@@ -1,323 +1,306 @@
 {
     "CAS": [
         {
-            "name": "placeholder1",
+            "name": "Missionary strength",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Yearly prestige",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Goods produced modifier",
             "value": "0",
             "count": 0
         }
     ],
 	    "ENG": [
         {
-            "name": "placeholder1",
+            "name": "Yearly legitimacy",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Production efficiency",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "National manpower modifier",
             "value": "0",
             "count": 0
         }
     ],
 	    "BUR": [
         {
-            "name": "placeholder1",
+            "name": "Diplomatic reputation",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Stability cost modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Manpower recovery speed",
             "value": "0",
             "count": 0
         }
     ],
 	    "FRA": [
         {
-            "name": "placeholder1",
+            "name": "Technology cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Land maintenance modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Cost of advisors with ruler's culture",
             "value": "0",
             "count": 0
         }
     ],
 	    "POR": [
         {
-            "name": "placeholder1",
+            "name": "Culture conversion cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Production efficiency",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Institution spread",
             "value": "0",
             "count": 0
         }
     ],
 	    "HAB": [
         {
-            "name": "placeholder1",
+            "name": "Global trade power",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Galley combat ability",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Yearly papal influence",
             "value": "0",
             "count": 0
         }
     ],
 	    "BRA": [
         {
-            "name": "placeholder1",
+            "name": "Trade efficiency",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Tolerance of heretics",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Movement speed",
             "value": "0",
             "count": 0
         }
     ],
 	    "MLO": [
         {
-            "name": "placeholder1",
+            "name": "Core-creation cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Diplomats",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
-            "value": "0",
-            "count": 0
-        }
-    ],
-	    "SWI": [
-        {
-            "name": "placeholder1",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder2",
-            "value": "0",
-            "count": 0
-        },
-        {
-            "name": "placeholder3",
+            "name": "Infanyry combat ability",
             "value": "0",
             "count": 0
         }
     ],
 	    "MOS": [
         {
-            "name": "placeholder1",
+            "name": "Naval force limit modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Institution spread",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "National unrest",
             "value": "0",
             "count": 0
         }
     ],
 	    "POL": [
         {
-            "name": "placeholder1",
+            "name": "Caravan power",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Ship trade power",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Garrison size",
             "value": "0",
             "count": 0
         }
     ],
 	    "HUN": [
         {
-            "name": "placeholder1",
+            "name": "Goods produced modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Governing capacity modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Idea cost",
             "value": "0",
             "count": 0
         }
     ],
 	    "TUR": [
         {
-            "name": "placeholder1",
+            "name": "Stability cost modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Manpower in true faith provinces",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Trade efficiency",
             "value": "0",
             "count": 0
         }
     ],
 	    "MAM": [
         {
-            "name": "placeholder1",
+            "name": "Cavalry cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "National unrest",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Missionary strength",
             "value": "0",
             "count": 0
         }
     ],
 	    "MOR": [
         {
-            "name": "placeholder1",
+            "name": "National manpower modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Construction cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Siege ability",
             "value": "0",
             "count": 0
         }
     ],
 	    "ETH": [
         {
-            "name": "placeholder1",
+            "name": "Construction cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Tolerance of heathens",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Governing capacity",
             "value": "0",
             "count": 0
         }
     ],
 	    "MER": [
         {
-            "name": "placeholder1",
+            "name": "Diplomatic reputation",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Governing capacity modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Stability cost modifier",
             "value": "0",
             "count": 0
         }
     ],
 	    "BAH": [
         {
-            "name": "placeholder1",
+            "name": "Development cost",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "National manpower modifier",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Ship trade power",
             "value": "0",
             "count": 0
         }
     ],
 	    "BNG": [
         {
-            "name": "placeholder1",
+            "name": "Force limit",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder2",
+            "name": "Trade efficiency",
             "value": "0",
             "count": 0
         },
         {
-            "name": "placeholder3",
+            "name": "Spy network construction",
             "value": "0",
             "count": 0
         }

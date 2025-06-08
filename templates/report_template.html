@@ -106,7 +106,7 @@
                 <li><span class="highlight">China Emperor:</span> 3 Points </li>
                 <li><span class="highlight">China Reforms:</span> {{china_data.level}} points </li>
                 {% endif %}
-                {% if country.tag in hre_data.electors and hre_data.level > 0 %}
+                {% if country.tag in hre_data.electors and hre_data.level > 0 and country.tag != china_data.emperor %}
                 <li><span class="highlight">HRE Reforms for electors:</span> {{hre_data.level}} * 5 points </li>
                 {% endif %}
                 {% if country.tag == losses_data.tag %}
