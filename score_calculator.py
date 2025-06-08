@@ -345,6 +345,8 @@ def enrich_country_data_with_ideas(country_data):
                 ideas[ideas.index('naval_ideas')] = 'quantity_ideas'
             if tag == 'HAB':
                 ideas = ["influence_ideas", "economic_ideas", "diplomatic_ideas", "defensive_ideas", "religious_ideas", "offensive_ideas", "administrative_ideas", "quality_ideas"]
+            elif tag == 'MER':
+                ideas = ["aristocracy_ideas", "diplomatic_ideas", "defensive_ideas", "trade_ideas", "offensive_ideas", "religious_ideas", "espionage_ideas", "economic_ideas"]
             entry['historical_idea_groups'] = ideas
         else:
             print(f"[!] historical_idea_groups not found for {tag}")
