@@ -116,7 +116,7 @@
             <h3>Modifier Score: {{ country.modifier_score }}</h3>
             <ul>
                 {% for modifier in country.modifiers %}
-                <li><span class="highlight">Modifier:</span> {{modifier.name}}, <span class="highlight">Value:</span> {{modifier.value}}, <span class="highlight">Count:</span> {{modifier.count}} </span></li>
+                <li><span class="highlight">Modifier:</span>, <span class="highlight">Count:</span> {{modifier.count}} </span></li>
                 {% endfor %}
             </ul>
             <h3>Total Score: {{ country.total_score|round(2) }}</h3>
