@@ -3,29 +3,29 @@
         {
             "name": "Missionary strength",
             "value": "?",
-            "count": 10
+            "count": 12
         },
         {
             "name": "Yearly prestige",
             "value": "?",
-            "count": 4
+            "count": 2
         },
         {
             "name": "Goods produced modifier",
-            "value": "0",
-            "count": 2
+            "value": "?",
+            "count": 3
         }
     ],
 	    "BUR": [
         {
             "name": "Diplomatic reputation",
             "value": "?",
-            "count": 7
+            "count": 11
         },
         {
             "name": "Stability cost modifier",
             "value": "?",
-            "count": 3
+            "count": 4
         },
         {
             "name": "Manpower recovery speed",
@@ -71,7 +71,7 @@
         {
             "name": "Global trade power",
             "value": "?",
-            "count": 4
+            "count": 5
         },
         {
             "name": "Galley combat ability",
@@ -81,7 +81,7 @@
         {
             "name": "Yearly papal influence",
             "value": "?",
-            "count": 3
+            "count": 1
         }
     ],
 	    "BRA": [
@@ -93,7 +93,7 @@
         {
             "name": "Tolerance of heretics",
             "value": "?",
-            "count": 3
+            "count": 4
         },
         {
             "name": "Movement speed",
@@ -122,7 +122,7 @@
         {
             "name": "Naval force limit modifier",
             "value": "?",
-            "count": 2
+            "count": 3
         },
         {
             "name": "Institution spread",
@@ -132,7 +132,7 @@
         {
             "name": "National unrest",
             "value": "?",
-            "count": 3
+            "count": 6
         }
     ],
 	    "HUN": [
@@ -144,19 +144,19 @@
         {
             "name": "Governing capacity modifier",
             "value": "0",
-            "count": 0
+            "count": 1
         },
         {
             "name": "Idea cost",
             "value": "0",
-            "count": 0
+            "count": 1
         }
     ],
 	    "ETH": [
         {
             "name": "Construction cost",
             "value": "?",
-            "count": 1
+            "count": 2
         },
         {
             "name": "Tolerance of heathens",
@@ -166,7 +166,7 @@
         {
             "name": "Governing capacity",
             "value": "?",
-            "count": 6
+            "count": 7
         }
     ],
 	    "MER": [
@@ -178,19 +178,19 @@
         {
             "name": "Governing capacity modifier",
             "value": "0",
-            "count": 0
+            "count": 5
         },
         {
             "name": "Stability cost modifier",
             "value": "?",
-            "count": 2
+            "count": 1
         }
     ],
 	    "BAH": [
         {
             "name": "Development cost",
             "value": "?",
-            "count": 4
+            "count": 3
         },
         {
             "name": "National manpower modifier",
@@ -199,8 +199,8 @@
         },
         {
             "name": "Ship trade power",
-            "value": "? Cant calculate modifier",
-            "count": 0
+            "value": "?",
+            "count": 1
         }
     ],
 	    "JAP": [
