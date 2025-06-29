@@ -350,7 +350,7 @@ def enrich_country_data_with_ideas(country_data):
             elif tag == 'POR':
                 ideas = ["exploration_ideas", "expansion_ideas", "offensive_ideas", "religious_ideas", "quality_ideas", "economic_ideas", "maritime_ideas", "defensive_ideas"]
             elif tag == 'AKS':
-                ideas = ['defensive_ideas', 'religious_ideas', 'offensive_ideas', 'influence_ideas', 'espionage_ideas', 'economic_ideas', 'quality_ideas', 'diplomatic_ideas']
+                ideas = ['defensive_ideas', 'religious_ideas', 'offensive_ideas', 'influence_ideas', 'spy_ideas', 'economic_ideas', 'quality_ideas', 'diplomatic_ideas']
             entry['historical_idea_groups'] = ideas
         else:
             print(f"[!] historical_idea_groups not found for {tag}")
