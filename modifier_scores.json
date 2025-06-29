@@ -3,92 +3,75 @@
         {
             "name": "Missionary strength",
             "value": "?",
-            "count": 12
-        },
-        {
-            "name": "Yearly prestige",
-            "value": "?",
-            "count": 2
+            "count": 13
         },
         {
             "name": "Goods produced modifier",
             "value": "?",
-            "count": 3
+            "count": 4
+        },
+        {
+            "name": "Advisor cost",
+            "value": "?",
+            "count": 1
         }
     ],
 	    "BUR": [
         {
             "name": "Diplomatic reputation",
             "value": "?",
-            "count": 11
+            "count": 6
         },
         {
             "name": "Stability cost modifier",
             "value": "?",
-            "count": 4
+            "count": 10
         },
         {
-            "name": "Manpower recovery speed",
+            "name": "Advisor cost",
             "value": "?",
-            "count": 2
-        }
-    ],
-	    "FRA": [
-        {
-            "name": "Technology cost",
-            "value": "?",
-            "count": 4
-        },
-        {
-            "name": "Land maintenance modifier",
-            "value": "-5%",
-            "count": 3
-        },
-        {
-            "name": "Cost of advisors with ruler's culture",
-            "value": "0",
-            "count": 0
+            "count": 5
         }
     ],
 	    "POR": [
         {
-            "name": "Culture conversion cost",
-            "value": "?",
-            "count": 2
-        },
-        {
-            "name": "Production efficiency",
-            "value": "6%",
-            "count": 2
-        },
-        {
-            "name": "Institution spread",
+            "name": "Diplomatic annexation cost",
             "value": "?",
             "count": 1
+        },
+        {
+            "name": "Improve relations",
+            "value": "?",
+            "count": 0
+        },
+        {
+            "name": "Fort defense",
+            "value": "?",
+            "count": 5
         }
     ],
 	    "HAB": [
         {
             "name": "Global trade power",
             "value": "?",
-            "count": 5
+            "count": 4
         },
         {
-            "name": "Galley combat ability",
-            "value": "0",
+            "name": "Trade steering",
+            "value": "?",
             "count": 0
         },
         {
             "name": "Yearly papal influence",
             "value": "?",
-            "count": 1
+            "count": 6
         }
     ],
 	    "BRA": [
         {
             "name": "Trade efficiency",
             "value": "?",
-            "count": 3
+            "count": 9
         },
         {
             "name": "Tolerance of heretics",
@@ -96,94 +79,77 @@
             "count": 4
         },
         {
-            "name": "Movement speed",
-            "value": "Not yet calculated",
-            "count": 0
+            "name": "Advisor cost",
+            "value": "?",
+            "count": 4
         }
     ],
 	    "MLO": [
         {
-            "name": "Core-creation cost",
+            "name": "Morale of navies",
             "value": "?",
-            "count": 2
+            "count": 3
         },
         {
             "name": "Diplomats",
-            "value": "7 total",
-            "count": 4
+            "value": "?",
+            "count": 5
         },
         {
-            "name": "Infanyry combat ability",
+            "name": "Land force limit modifier",
             "value": "?",
-            "count": 3
+            "count": 1
         }
     ],
 	    "MOS": [
         {
-            "name": "Naval force limit modifier",
-            "value": "?",
-            "count": 3
-        },
-        {
             "name": "Institution spread",
             "value": "?",
-            "count": 3
+            "count": 1
+        },
+        {
+            "name": "Stability cost modifier",
+            "value": "?",
+            "count": 5
         },
         {
             "name": "National unrest",
             "value": "?",
-            "count": 6
-        }
-    ],
-	    "HUN": [
-        {
-            "name": "Goods produced modifier",
-            "value": "?",
-            "count": 1
-        },
-        {
-            "name": "Governing capacity modifier",
-            "value": "0",
-            "count": 1
-        },
-        {
-            "name": "Idea cost",
-            "value": "0",
-            "count": 1
+            "count": 5
         }
     ],
 	    "ETH": [
         {
-            "name": "Construction cost",
-            "value": "?",
-            "count": 2
-        },
-        {
-            "name": "Tolerance of heathens",
-            "value": "?",
-            "count": 1
-        },
-        {
             "name": "Governing capacity",
             "value": "?",
             "count": 7
+        },
+        {
+            "name": "Trade steering",
+            "value": "?",
+            "count": 0
+        },
+        {
+            "name": "Land maintenance modifier",
+            "value": "?",
+            "count": 3
         }
     ],
 	    "MER": [
         {
             "name": "Diplomatic reputation",
             "value": "0",
-            "count": 5
+            "count": 6
         },
         {
             "name": "Governing capacity modifier",
             "value": "0",
-            "count": 5
+            "count": 2
         },
         {
-            "name": "Stability cost modifier",
+            "name": "Agressive expansion impact",
             "value": "?",
-            "count": 1
+            "count": 3
         }
     ],
 	    "BAH": [
@@ -195,19 +161,19 @@
         {
             "name": "National manpower modifier",
             "value": "?",
-            "count": 3
+            "count": 5
         },
         {
             "name": "Ship trade power",
             "value": "?",
-            "count": 1
+            "count": 2
         }
     ],
 	    "JAP": [
         {
-            "name": "Trade efficiency",
+            "name": "Land force limit modifier",
             "value": "?",
-            "count": 5
+            "count": 1
         },
         {
             "name": "Morale of navies",
@@ -215,9 +181,9 @@
             "count": 6
         },
         {
-            "name": "Core-creation cost",
+            "name": "Missionary strength",
             "value": "?",
-            "count": 1
+            "count": 6
         }
     ]
 }
