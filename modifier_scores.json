@@ -3,56 +3,56 @@
         {
             "name": "Missionary strength/ Goods produced modifier/ Advisor cost",
             "value": "?",
-            "count": 63
+            "count": 21
         }
     ],
 	    "BUR": [
         {
             "name": "Diplomatic reputation/ Stability cost modifier/ Advisor cost",
             "value": "?",
-            "count": 66
+            "count": 22
         }
     ],
 	    "POR": [
         {
             "name": "Diplomatic annexation cost/ Improve relations/ Fort defense",
             "value": "?",
-            "count": 15
+            "count": 5
         }
     ],
 	    "HAB": [
         {
             "name": "Global trade power/ Trade steering/ Yearly papal influence",
             "value": "?",
-            "count": 31
+            "count": 10
         }
     ],
 	    "BRA": [
         {
             "name": "Trade efficiency/ Tolerance of heretics/ Advisor cost",
             "value": "?",
-            "count": 45
+            "count": 15
         }
     ],
 	    "MLO": [
         {
             "name": "Morale of navies/ Diplomats/ Land force limit modifier",
             "value": "?",
-            "count": 24
+            "count": 8
         }
     ],
 	    "MOS": [
         {
             "name": "Institution spread/ Stability cost modifier/ National unrest",
             "value": "?",
-            "count": 42
+            "count": 14
         }
     ],
 	    "ETH": [
         {
-            "name": "Governing capacity/ Trade efficiency/ Land maintenance modifier",
+            "name": "Governing capacity/ Trade steering/ Land maintenance modifier",
             "value": "?",
-            "count": 30
+            "count": 10
         }
     ]
 }
