@@ -1,189 +1,58 @@
 {
     "CAS": [
         {
-            "name": "Missionary strength",
+            "name": "Missionary strength/ Goods produced modifier/ Advisor cost",
             "value": "?",
-            "count": 13
-        },
-        {
-            "name": "Goods produced modifier",
-            "value": "?",
-            "count": 4
-        },
-        {
-            "name": "Advisor cost",
-            "value": "?",
-            "count": 1
+            "count": 63
         }
     ],
 	    "BUR": [
         {
-            "name": "Diplomatic reputation",
+            "name": "Diplomatic reputation/ Stability cost modifier/ Advisor cost",
             "value": "?",
-            "count": 6
-        },
-        {
-            "name": "Stability cost modifier",
-            "value": "?",
-            "count": 10
-        },
-        {
-            "name": "Advisor cost",
-            "value": "?",
-            "count": 5
+            "count": 66
         }
     ],
 	    "POR": [
         {
-            "name": "Diplomatic annexation cost",
+            "name": "Diplomatic annexation cost/ Improve relations/ Fort defense",
             "value": "?",
-            "count": 1
-        },
-        {
-            "name": "Improve relations",
-            "value": "?",
-            "count": 0
-        },
-        {
-            "name": "Fort defense",
-            "value": "?",
-            "count": 5
+            "count": 15
         }
     ],
 	    "HAB": [
         {
-            "name": "Global trade power",
+            "name": "Global trade power/ Trade steering/ Yearly papal influence",
             "value": "?",
-            "count": 4
-        },
-        {
-            "name": "Trade steering",
-            "value": "?",
-            "count": 0
-        },
-        {
-            "name": "Yearly papal influence",
-            "value": "?",
-            "count": 6
+            "count": 31
         }
     ],
 	    "BRA": [
         {
-            "name": "Trade efficiency",
+            "name": "Trade efficiency/ Tolerance of heretics/ Advisor cost",
             "value": "?",
-            "count": 9
-        },
-        {
-            "name": "Tolerance of heretics",
-            "value": "?",
-            "count": 4
-        },
-        {
-            "name": "Advisor cost",
-            "value": "?",
-            "count": 4
+            "count": 45
         }
     ],
 	    "MLO": [
         {
-            "name": "Morale of navies",
+            "name": "Morale of navies/ Diplomats/ Land force limit modifier",
             "value": "?",
-            "count": 3
-        },
-        {
-            "name": "Diplomats",
-            "value": "?",
-            "count": 5
-        },
-        {
-            "name": "Land force limit modifier",
-            "value": "?",
-            "count": 1
+            "count": 24
         }
     ],
 	    "MOS": [
         {
-            "name": "Institution spread",
+            "name": "Institution spread/ Stability cost modifier/ National unrest",
             "value": "?",
-            "count": 1
-        },
-        {
-            "name": "Stability cost modifier",
-            "value": "?",
-            "count": 5
-        },
-        {
-            "name": "National unrest",
-            "value": "?",
-            "count": 5
+            "count": 42
         }
     ],
 	    "ETH": [
         {
-            "name": "Governing capacity",
+            "name": "Governing capacity/ Trade efficiency/ Land maintenance modifier",
             "value": "?",
-            "count": 7
-        },
-        {
-            "name": "Trade steering",
-            "value": "?",
-            "count": 0
-        },
-        {
-            "name": "Land maintenance modifier",
-            "value": "?",
-            "count": 3
-        }
-    ],
-	    "MER": [
-        {
-            "name": "Diplomatic reputation",
-            "value": "0",
-            "count": 6
-        },
-        {
-            "name": "Governing capacity modifier",
-            "value": "0",
-            "count": 2
-        },
-        {
-            "name": "Agressive expansion impact",
-            "value": "?",
-            "count": 3
-        }
-    ],
-	    "BAH": [
-        {
-            "name": "Development cost",
-            "value": "?",
-            "count": 3
-        },
-        {
-            "name": "National manpower modifier",
-            "value": "?",
-            "count": 5
-        },
-        {
-            "name": "Ship trade power",
-            "value": "?",
-            "count": 2
-        }
-    ],
-	    "JAP": [
-        {
-            "name": "Land force limit modifier",
-            "value": "?",
-            "count": 1
-        },
-        {
-            "name": "Morale of navies",
-            "value": "?",
-            "count": 6
-        },
-        {
-            "name": "Missionary strength",
-            "value": "?",
-            "count": 6
+            "count": 30
         }
     ]
 }
