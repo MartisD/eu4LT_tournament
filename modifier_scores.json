@@ -3,14 +3,14 @@
         {
             "name": "Missionary strength/ Goods produced modifier/ Advisor cost",
             "value": "?",
-            "count": 21
+            "count": 18
         }
     ],
 	    "BUR": [
         {
             "name": "Diplomatic reputation/ Stability cost modifier/ Advisor cost",
             "value": "?",
-            "count": 22
+            "count": 23
         }
     ],
 	    "POR": [
@@ -45,14 +45,30 @@
         {
             "name": "Institution spread/ Stability cost modifier/ National unrest",
             "value": "?",
-            "count": 14
+            "count": 19
         }
     ],
 	    "ETH": [
         {
             "name": "Governing capacity/ Trade steering/ Land maintenance modifier",
             "value": "?",
-            "count": 10
+            "count": 7
+        }
+    ], "BAH": [
+        {
+            "name": "Development cost",
+            "value": "?",
+            "count": 3
+        },
+        {
+            "name": "National manpower modifier",
+            "value": "?",
+            "count": 5
+        },
+        {
+            "name": "Ship trade power",
+            "value": "?",
+            "count": 2
         }
     ]
 }
