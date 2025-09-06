@@ -127,7 +127,7 @@ def extract_country_data(gamestate_data, players_countries):
 
                                 current_data['victory_cards'][-1]['was_fulfilled'] = val
                                 if val == 'yes':
-                                    current_data['victory_cards'][-1]['score'] = 20
+                                    current_data['victory_cards'][-1]['score'] = 15
                                 else:
                                     current_data['victory_cards'][-1]['score'] = 0
                                 
