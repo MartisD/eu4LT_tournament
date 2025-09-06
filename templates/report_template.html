@@ -41,12 +41,13 @@
             <tr>
                 <th>Player</th>
                 <th>Tag</th>
-                <th>Country Name</th>
+                <th>Name</th>
                 <th>Growth Score</th>
                 <th>VC Score</th>
-                <th>Hist Ideas</th>
-                <th>Misc</th>
-                <th>Modifier</th>
+                <th>Empire</th>
+                <th>TOP 1 Score</th>
+                <th>TOP 2 Score</th>
+                <th>TOP 3 Score</th>
                 <th>Total Score</th>
             </tr>
         </thead>
@@ -57,20 +58,56 @@
                 <td>{{ country.tag }}  {% if country.original_tag != country.tag %} (Original - {{country.original_tag}}){% endif %}</td>
                 <td>{{ country.name }}</td>
                 <td>{{ country.growth_score|round(2) }}</td>
-                <td>{{ country.victory_card_score|round(2) }}</td>
-                <td>{{ country.historical_idea_score }}</td>
+                <td>{{ country.victory_card_score }}</td>
                 <td>{{ country.misc_score }}</td>
-                <td>{{ country.modifier_score }}</td>
-                <td>{{ country.total_score|round(2) }}</td>
+                <td>{{ country.top_1_score }}</td>
+                <td>{{ country.top_2_score }}</td>
+                <td>{{ country.top_3_score }}</td>
+                <td><b>{{ country.total_score|round(2) }}</b></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    <h2>TOP STATS</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 24px;">
+        {% for stat, places in top_stats.items() %}
+        <div style="flex: 1 1 250px; min-width: 220px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 12px;">
+            <h3 style="margin-top: 0;">{{ stat.replace('_', ' ').title() }}</h3>
+            <ul>
+                <li>
+                    <span class="highlight">1st Place:</span>
+                    {% if places[0] is defined %}
+                        {{ places[0][0] }} ({{ places[0][1] }})
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="highlight">2nd Place:</span>
+                    {% if places|length > 1 %}
+                        {{ places[1][0] }} ({{ places[1][1] }})
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="highlight">3rd Place:</span>
+                    {% if places|length > 2 %}
+                        {{ places[2][0] }} ({{ places[2][1] }})
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
     <div class="details">
         <h2>Detailed Information</h2>
         {% for country in sorted_data %}
-        <button class="accordion">{{ country.player }} ({{ country.tag }}) - {{country.name}}</button>
+        <button class="accordion">{{ country.player }} ({{ country.tag }})</button>
         <div class="panel">
             {% if country.original_tag != country.tag %}
             <h3>Original tag: {{ country.original_tag }}</h3>
@@ -80,7 +117,7 @@
                 <li><span class="highlight">Starting Development:</span> {{ country.starting_development }}</li>
                 <li><span class="highlight">Current Development:</span> {{ country.development }}</li>
             </ul>
-            <h3>Victory Card Score: {{ country.victory_card_score|round(2) }}</h3>
+            <h3>Victory Card Score: {{ country.victory_card_score}}</h3>
             <ul>
                 {% for card in country.victory_cards %}
                 <li><span class="highlight">Area:</span>{{card.area}}</li>
@@ -88,16 +125,17 @@
                 <li><span class="highlight">Was fulfilled:</span>{{card.was_fulfilled}}</li>
                 {% endfor %}
             </ul>
-            <h3>Historical Idea Score: {{ country.historical_idea_score }}</h3>
+            <h3>TOP 3 SCORE: {{ country.top_1_score + country.top_2_score + country.top_3_score }}</h3>
             <ul>
-                <li><span class="highlight">Historical Ideas:</span> {{ country.historical_idea_groups|join(', ') }}</li>
-                <li><span class="highlight">Active Idea Groups:</span> {{ country.active_idea_groups|join(', ') }}</li>
+                <li><span class="highlight">1st Place:</span> {{ country.top_1 }}</li>
+                <li><span class="highlight">1st Place Score:</span> {{ country.top_1_score }}</li>
+                <li><span class="highlight">2nd Place:</span> {{ country.top_2 }}</li>
+                <li><span class="highlight">2nd Place Score:</span> {{ country.top_2_score }}</li>
+                <li><span class="highlight">3rd Place:</span> {{ country.top_3 }}</li>
+                <li><span class="highlight">3rd Place Score:</span> {{ country.top_3_score }}</li>
             </ul>
-            <h3>Miscellaneous Score: {{ country.misc_score }}</h3>
+            <h3>Empire Score: {{ country.empire_score }}</h3>
             <ul>
-                {% if most_dev_province.owner == country.tag %}
-                <li><span class="highlight">Most Developed Province:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }}) with {{ most_dev_province.development }} development = 10 points for owning it</li>
-                {% endif %}
                 {% if country.tag == hre_data.emperor %}
                 <li><span class="highlight">HRE Emperor:</span> 10 Points </li>
                 <li><span class="highlight">HRE Reforms:</span> {{hre_data.level}} * 5 points </li>
@@ -109,28 +147,12 @@
                 {% if country.tag in hre_data.electors and hre_data.level > 0 and country.tag != china_data.emperor %}
                 <li><span class="highlight">HRE Reforms for electors:</span> {{hre_data.level}} * 5 points </li>
                 {% endif %}
-                {% if country.tag == losses_data.tag %}
-                <li><span class="highlight">Highest combat losses in the game ({{losses_data.losses}}):</span> 10 points </li>
-                {% endif %}
-            </ul>
-            <h3>Modifier Score: {{ country.modifier_score }}</h3>
-            <ul>
-                {% for modifier in country.modifiers %}
-                <li><span class="highlight">Modifier:</span> {{modifier.name}}, <span class="highlight">Count:</span> {{modifier.count}} </span></li>
-                {% endfor %}
             </ul>
             <h3>Total Score: {{ country.total_score|round(2) }}</h3>
         </div>
         {% endfor %}
     </div>
 
-    <h2>Most Developed Province</h2>
-    <p><span class="highlight">Name:</span> {{ most_dev_province.name }} (ID: {{ most_dev_province.id }})</p>
-    <p><span class="highlight">Owner:</span> {{ most_dev_province.owner }}</p>
-    <p><span class="highlight">Development:</span> {{ most_dev_province.development }}</p>
-    <h2>Highest losses in combat</h2>
-    <p><span class="highlight">TAG:</span> {{losses_data.tag}}</p>
-    <p><span class="highlight">Losses:</span> {{ losses_data.losses }}</p>
     <h2>HRE DATA</h2>
     <p><span class="highlight">Emperor:</span> {{hre_data.emperor}}</p>
     <p><span class="highlight">Reforms passed:</span> {{ hre_data.level }}</p>
