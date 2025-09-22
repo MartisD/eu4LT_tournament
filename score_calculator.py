@@ -375,7 +375,6 @@ def get_top_stats(country_data):
         'production_income': [],
         'max_manpower': [],
         'max_morale': [],
-        'professionalism': [],
         'losses': [],
     }
     # Prepare lists for each stat, filtering out missing values
