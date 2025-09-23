@@ -366,6 +366,27 @@ def get_empire_data(gamestate_data):
         i += 1
     return HRE_data, CHINA_data
 
+def add_manual_stats_from_json(country_data, json_path='manual_stats.json'):
+    """
+    Loads manual stats (force_limit, naval_force_limit, discipline) from a JSON file
+    and updates the corresponding countries in country_data.
+    The JSON should be a dict: { "TAG": { "force_limit": X, "naval_force_limit": Y, "discipline": Z }, ... }
+    """
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            manual_stats = json.load(f)
+    except FileNotFoundError:
+        print(f"Manual stats file '{json_path}' not found. Skipping manual stats.")
+        return country_data
+
+    for country in country_data:
+        tag = country.get('tag')
+        if tag in manual_stats:
+            for stat in ['force_limit', 'naval_force_limit', 'discipline']:
+                if stat in manual_stats[tag]:
+                    country[stat] = manual_stats[tag][stat]
+    return country_data
+
 def get_top_stats(country_data):
     stats = {
         'development': [],
@@ -376,6 +397,9 @@ def get_top_stats(country_data):
         'max_manpower': [],
         'max_morale': [],
         'losses': [],
+        'force_limit': [],
+        'naval_force_limit': [],
+        'discipline': []
     }
     # Prepare lists for each stat, filtering out missing values
     for stat in stats.keys():
@@ -528,6 +552,7 @@ def main():
         country_data = extract_country_data(gamestate_data.splitlines(), players_countries)
         country_data = enrich_country_data_with_ideas(country_data)
         # country_data = add_modifier_data(country_data)
+        country_data = add_manual_stats_from_json(country_data, 'manual_stats.json')
         HRE_data, CHINA_data = get_empire_data(gamestate_data.splitlines())
         
         top_stats = get_top_stats(country_data)

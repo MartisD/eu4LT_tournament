@@ -1,0 +1,18 @@
+{
+    "RUS": { "force_limit": 610, "naval_force_limit": 107, "discipline": 131.3 },
+    "PLC": { "force_limit": 342, "naval_force_limit": 47, "discipline": 125.5 },
+    "GBR": { "force_limit": 234, "naval_force_limit": 283, "discipline": 133.4 },
+    "FRA": { "force_limit": 273, "naval_force_limit": 85, "discipline": 129.3 },
+    "TUR": { "force_limit": 550, "naval_force_limit": 131, "discipline": 133.8 },
+    "POR": { "force_limit": 253, "naval_force_limit": 333, "discipline": 111.1 },
+    "SPA": { "force_limit": 327, "naval_force_limit": 128, "discipline": 124.6 },
+    "GER": { "force_limit": 517, "naval_force_limit": 95, "discipline": 139.4 },
+    "ERS": { "force_limit": 908, "naval_force_limit": 163, "discipline": 134.8 },
+    "QNG": { "force_limit": 1395, "naval_force_limit": 230, "discipline": 112.3 },
+    "JPN": { "force_limit": 277, "naval_force_limit": 258, "discipline": 123.7 },
+    "KOR": { "force_limit": 101, "naval_force_limit": 112, "discipline": 121.6 },
+    "SIA": { "force_limit": 520, "naval_force_limit": 260, "discipline": 128.3 },
+    "NPL": { "force_limit": 739, "naval_force_limit": 83, "discipline": 126.2 },
+    "ETH": { "force_limit": 261, "naval_force_limit": 79, "discipline": 125.6 },
+    "ITA": { "force_limit": 598, "naval_force_limit": 257, "discipline": 113.9 }
+}
