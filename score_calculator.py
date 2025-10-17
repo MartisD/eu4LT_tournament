@@ -104,9 +104,9 @@ def extract_country_data(gamestate_data, players_countries):
                             i += 2
                             continue
     
-                        if line.startswith('no_of_dev_clicks'):
-                            val = line.split('=')[1].strip()
-                            current_data['dev_clicks'] = float(val)
+                        # if line.startswith('no_of_dev_clicks'):
+                        #     val = line.split('=')[1].strip()
+                        #     current_data['dev_clicks'] = float(val)
                         
                         elif line.startswith('starting_development'):
                             val = line.split('=')[1].strip()
@@ -382,7 +382,7 @@ def add_manual_stats_from_json(country_data, json_path='manual_stats.json'):
     for country in country_data:
         tag = country.get('tag')
         if tag in manual_stats:
-            for stat in ['force_limit', 'naval_force_limit', 'discipline']:
+            for stat in ['force_limit', 'naval_force_limit', 'discipline', 'dev_clicks']:
                 if stat in manual_stats[tag]:
                     country[stat] = manual_stats[tag][stat]
     return country_data
